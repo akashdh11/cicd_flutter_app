@@ -4,23 +4,19 @@ name: Flutter
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      flavor:
+        description: 'Flavor'
         required: true
-        default: 'warning'
+        default: 'uat'
         type: choice
         options:
-          - info
-          - warning
-          - debug
+          - uat
+          - preprod
+          - prod
       tags:
-        description: 'Test scenario tags'
+        description: 'App Bundle'
         required: false
         type: boolean
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
 
 jobs:
   flutter_job:
