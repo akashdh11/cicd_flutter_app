@@ -2,12 +2,25 @@
 name: Flutter
 
 on:
-  # Runs this action when you push on master
-  push:
-    branches: [ "main" ]
-  # Runs this when a PR against master is created
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 jobs:
   flutter_job:
